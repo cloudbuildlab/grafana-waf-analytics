@@ -1,0 +1,16 @@
+[Unit]
+Description=Configuration Sync Service
+After=network.target
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+Environment=CONFIG_BUCKET=${config_bucket}
+Environment=AWS_REGION=${region}
+ExecStart=/usr/local/bin/config-sync.sh
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

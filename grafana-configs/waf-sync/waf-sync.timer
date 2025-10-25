@@ -1,0 +1,10 @@
+[Unit]
+Description=Run WAF Log Sync every 5 minutes
+Requires=waf-sync.service
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=5min
+
+[Install]
+WantedBy=timers.target

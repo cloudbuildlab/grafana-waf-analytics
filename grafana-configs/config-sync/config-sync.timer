@@ -1,0 +1,10 @@
+[Unit]
+Description=Run Grafana Configuration Sync every minute
+Requires=config-sync.service
+
+[Timer]
+OnCalendar=*:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target
