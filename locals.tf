@@ -18,14 +18,8 @@ locals {
 
   config_files = {
     "grafana/grafana.ini"                                        = "./grafana-configs/grafana/grafana.ini"
-    "grafana/grafana.service"                                    = "./grafana-configs/grafana/grafana.service"
     "grafana/provisioning/datasources/datasources.yml"           = "./grafana-configs/grafana/provisioning/datasources/datasources.yml"
-    "grafana/provisioning/dashboards/dashboard.yml"              = "./grafana-configs/grafana/provisioning/dashboards/dashboard.yml"
-    "grafana/provisioning/dashboards/waf-logs.json"              = "./grafana-configs/grafana/provisioning/dashboards/waf-logs.json"
-    "grafana/provisioning/dashboards/geomap-dashboard.json"      = "./grafana-configs/grafana/provisioning/dashboards/geomap-dashboard.json"
     "grafana/provisioning/dashboards/connection-monitoring.json" = "./grafana-configs/grafana/provisioning/dashboards/connection-monitoring.json"
-    "grafana/provisioning/dashboards/waf-stats-dashboard.json"   = "./grafana-configs/grafana/provisioning/dashboards/waf-stats-dashboard.json"
-    "grafana/provisioning/dashboards/waf-loki-dashboard.json"    = "./grafana-configs/grafana/provisioning/dashboards/waf-loki-dashboard.json"
     "promtail/config.yml"                                        = "./grafana-configs/promtail/config.yml"
     "loki/loki.yml"                                              = "./grafana-configs/loki/loki.yml"
     "data/country-coords.json"                                   = "./grafana-configs/data/country-coords.json"
