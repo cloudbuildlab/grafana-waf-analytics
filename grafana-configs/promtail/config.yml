@@ -35,6 +35,60 @@ scrape_configs:
       - timestamp:
           source: ts
           format: UnixMs
+      - geoip:
+          db: /usr/share/GeoIP/GeoLite2-City.mmdb
+          source: clientIp
+          db_type: city
+      - template:
+          source: latitude
+          template: |
+            {{- if .geoip_location_latitude }}{{ .geoip_location_latitude }}
+            {{- else if eq .country "NZ" }}-40.9
+            {{- else if eq .country "AU" }}-25.3
+            {{- else if eq .country "US" }}39.8
+            {{- else if eq .country "GB" }}55.4
+            {{- else if eq .country "CA" }}56.1
+            {{- else if eq .country "DE" }}51.2
+            {{- else if eq .country "FR" }}46.2
+            {{- else if eq .country "JP" }}36.2
+            {{- else if eq .country "CN" }}35.9
+            {{- else if eq .country "IN" }}20.6
+            {{- else if eq .country "BR" }}-14.2
+            {{- else if eq .country "RU" }}61.5
+            {{- else if eq .country "MX" }}23.6
+            {{- else if eq .country "IT" }}41.9
+            {{- else if eq .country "ES" }}40.5
+            {{- else if eq .country "NL" }}52.1
+            {{- else if eq .country "SE" }}60.1
+            {{- else if eq .country "NO" }}60.5
+            {{- else if eq .country "DK" }}56.3
+            {{- else if eq .country "FI" }}61.9
+            {{- end }}
+      - template:
+          source: longitude
+          template: |
+            {{- if .geoip_location_longitude }}{{ .geoip_location_longitude }}
+            {{- else if eq .country "NZ" }}175.0
+            {{- else if eq .country "AU" }}134.0
+            {{- else if eq .country "US" }}-98.6
+            {{- else if eq .country "GB" }}-3.4
+            {{- else if eq .country "CA" }}-106.0
+            {{- else if eq .country "DE" }}10.5
+            {{- else if eq .country "FR" }}2.2
+            {{- else if eq .country "JP" }}138.3
+            {{- else if eq .country "CN" }}104.2
+            {{- else if eq .country "IN" }}78.9
+            {{- else if eq .country "BR" }}-51.9
+            {{- else if eq .country "RU" }}105.3
+            {{- else if eq .country "MX" }}-102.6
+            {{- else if eq .country "IT" }}12.6
+            {{- else if eq .country "ES" }}-3.7
+            {{- else if eq .country "NL" }}5.3
+            {{- else if eq .country "SE" }}18.6
+            {{- else if eq .country "NO" }}8.5
+            {{- else if eq .country "DK" }}9.5
+            {{- else if eq .country "FI" }}25.7
+            {{- end }}
       - labels:
           country:
           clientIp:
@@ -43,3 +97,5 @@ scrape_configs:
           httpMethod:
           uri:
           host:
+          latitude:
+          longitude:
